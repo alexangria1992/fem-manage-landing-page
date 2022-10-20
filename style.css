@@ -229,7 +229,7 @@ body {
 }
 
 .container {
-  background-color: red;
+  /* background-color: red; */
   --max-width: 1110px;
   --padding: 1rem;
 
@@ -279,7 +279,7 @@ body {
 /* Mobile Naviagtion */
 
 .primary-header {
-  margin-top: var(--size-700);
+  padding-top: var(--size-700);
   /* background-color: green; */
 }
 
@@ -301,12 +301,21 @@ body {
 @media (max-width: 50em) {
   .primary-navigation {
     display: none;
-    position: absolute;
+    position: fixed;
     /* background-color: green; */
     inset: 7em var(--size-400) auto;
     background: var(--clr-neutral-100);
     border-radius: var(--size-100);
     padding: var(--size-700);
+    box-shadow: 0 0 0.75em rgb(0, 0, 0, 0.05);
+  }
+
+  .primary-header[data-overlay]::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    height: 100vh;
+    background-image: linear-gradient(rgb(0 0 0 / 0), rgb(0 0 0 / 0.8));
   }
 
   .nav-list {
@@ -333,6 +342,11 @@ body {
     border: 0;
     padding: 0.5em;
     display: block;
+    position: fixed;
+    right: var(--size-400);
+    top: var(--size-600);
+
+    z-index: 100;
   }
 
   .mobile-nav-toggle .icon-close {
